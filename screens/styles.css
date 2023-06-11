@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: #76B6B2;
+  display: flex;
+  flex-direction: row;
+}
+
+.mainContainer {
+  flex: 1;
+}
+
+.add-search-container {
+  width: 100%;
+  display: flex;
+  padding: 2% 5%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-custom {
+  background-color: #D9D9D9;
+  color: rgba(30, 30, 30, 0.75);
+  outline: none;
+  border: none;
+}
+
+.searchContainer {
+  width: 30%;
+  height: 42px;
+  position: relative;
+}
+
+.searchBar {
+  
+  width: 100%;
+  height: 100%;
+
+  appearance: none;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+
+  padding: 5px;
+  background-color: #D9D9D9;
+}
+
+.tipoDocListContainer {
+  height: 30vh;
+  width: 90%;
+  overflow: auto;
+  background-color: #D9D9D9;
+  border: 1px solid #ccc;
+  margin: 0 5%;
+}
+
+.tipoDocLista {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 7px;
+}
+.tipoDocItem {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBarLabel {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+}
+
+.crud-buttons {
+  appearance: none;
+  background-color: transparent;
+  
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color:rgba(0, 0, 0, 0.3);;
+}
+
+.modal-content {
+  background-color: #76B6B2;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 360px;
+  color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close {
+  color: #eaeaea;
+  align-self: flex-end;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.custom-modal-form-input, .custom-modal-form-input:focus, .custom-modal-form-input:read-only {
+  background: rgba(217, 217, 217, 0.4);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.custom-form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-modal {
+  margin-top: 52px;
+  background: #468581;
+  color: #EAEAEA;
+  border: none;
+}
