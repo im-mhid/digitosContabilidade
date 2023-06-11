@@ -1,6 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../config/actions.php';
+require_once './valida_cadastroTipoDocumento.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -60,16 +61,16 @@ require_once '../config/actions.php';
       <div class="modal-content">
         <span id="closeAddModal" class="close">&times;</span>
         <h2>Cadastrar documento</h2>
-        <form class="w-100 custom-form">
+        <form class="w-100 custom-form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
           <div class="custom-form-group">
             <label for="tipoDocCadastro" class="col-md-3">Tipo do Documento:</label>
             <input type="text" name="tipoDocCadastro" id="tipoDocCadastro" class="form-control rounded-3 custom-modal-form-input">
           </div>
           <div class="custom-form-group">
-            <label for="tempoArmazenamentoCadastro" class="col-md-3">Tempo de armazenamento:</label>
-            <input type="text" name="tempoArmazenamentoCadastro" id="tempoArmazenamentoCadastro" class="form-control rounded-3 custom-modal-form-input">
+            <label for="tempoArquivamentoCadastro" class="col-md-3">Tempo de armazenamento:</label>
+            <input type="text" name="tempoArquivamentoCadastro" id="tempoArquivamentoCadastro" class="form-control rounded-3 custom-modal-form-input">
           </div>
-          <button type="submit" class="btn btn-primary btn-modal">Cadastrar</button>
+          <button type="submit" class="btn btn-primary btn-modal" id="buttonCadastrar">Cadastrar</button>
         </form>
       </div>
     </div>
