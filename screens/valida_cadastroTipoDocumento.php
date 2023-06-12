@@ -40,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($tipoDocCadastroErro) && empty($tempoArquivamentoCadastroErro)) {
     $resultado = criarTipoDocumentoAction($conexao, $tipoDocCadastro, $tempoArquivamentoCadastro);
     header("Location: {$_SERVER['REQUEST_URI']}");
+    echo "window.alert(" . $resultado . ")";
     exit();
+  } else {
+    echo "<script>window.alert('Erro ao cadastrar')</script>";
   }
 }
