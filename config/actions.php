@@ -8,6 +8,11 @@ function criarTipoDocumentoAction($conexao, $tipoDoc, $tempArquivamento)
     return $insereTipoDb == 1 ? 'criado-com-sucesso' : 'erro-ao-criar';
 }
 
+function selecionaTipoDocumentoPorIdAction($conexao, $codTipoDoc)
+{
+    return selecionaTipoDocumentoPorIdDb($conexao, $codTipoDoc);
+}
+
 function selecionaTipoDocumentoPorNomeAction($conexao, $tipoDoc)
 {
     return selecionaTipoDocumentoPorNomeDb($conexao, $tipoDoc);

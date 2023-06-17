@@ -47,7 +47,7 @@ require_once './valida_cadastroTipoDocumento.php';
                 <span class="action-buttons">
                   <button id="openViewModal" class="btn btn-sm crud-buttons"><i class="bi bi-eye-fill"></i></button>
                   <button id="openEditModal" class="btn btn-sm crud-buttons"><i class="bi bi-pencil-square"></i></button>
-                  <button class="btn btn-sm crud-buttons"><i class="bi bi-trash-fill"></i></button>
+                  <button class="btn btn-sm crud-buttons deleteButton" data-id="' . $registro["cod_tipo_doc"] . '"><i class="bi bi-trash-fill"></i></button>
                 </span>
               </li>';
           }
@@ -96,7 +96,7 @@ require_once './valida_cadastroTipoDocumento.php';
       <div class="modal-content">
         <span id="closeEditModal" class="close">&times;</span>
         <h2>Editar documento</h2>
-        <form class="w-100 ">
+        <form class="w-100 custom-form">
           <div class="custom-form-group">
             <label for="tipoDocEditar" class="col-md-3">Tipo do Documento:</label>
             <input type="text" name="tipoDocEditar" id="tipoDocEditar" class="form-control rounded-3 custom-modal-form-input">
@@ -112,6 +112,7 @@ require_once './valida_cadastroTipoDocumento.php';
   </div>
 
   <script src="addModal.js"></script>
+  <script src="buttons.js"></script>
 
 </body>
 

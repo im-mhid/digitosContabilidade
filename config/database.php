@@ -22,11 +22,32 @@ function insereTipoDocumentoDb($conexao, $tipoDoc, $tempArquivamento)
     return true;
   }
 }
+
+function selecionaTipoDocumentoPorIdDb($conexao, $codTipoDoc)
+{
+  $codTipoDoc = mysqli_real_escape_string($conexao, $codTipoDoc);
+
+  $sql = "SELECT * FROM tipo_doc  WHERE cod_tipo_doc = ?";
+  $stmt = mysqli_stmt_init($conexao);
+
+  if (!mysqli_stmt_prepare($stmt, $sql)) {
+    exit(SQLErrorMessage);
+  }
+
+  mysqli_stmt_bind_param($stmt, 'i', $codTipoDoc);
+  mysqli_stmt_execute($stmt);
+
+  $tipoDoc = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+  mysqli_close($conexao);
+  return $tipoDoc;
+}
+
 function selecionaTipoDocumentoPorNomeDb($conexao, $tipoDoc)
 {
   $tipoDoc = mysqli_real_escape_string($conexao, $tipoDoc);
 
-  $sql = "SELECT * FROM tipo_doc  WHERE tipoDoc = ?";
+  $sql = "SELECT * FROM tipo_doc  WHERE tipo_doc = ?";
   $stmt = mysqli_stmt_init($conexao);
 
   if (!mysqli_stmt_prepare($stmt, $sql)) {
