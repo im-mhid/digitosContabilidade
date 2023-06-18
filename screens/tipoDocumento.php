@@ -1,7 +1,6 @@
 <?php
 require_once '../config/config.php';
 require_once '../config/actions.php';
-require_once './valida_cadastroTipoDocumento.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -45,8 +44,8 @@ require_once './valida_cadastroTipoDocumento.php';
               <li class="tipoDocItem">
                 <span>' . $registro["tipo_doc"] . '</span>
                 <span class="action-buttons">
-                  <button id="openViewModal" class="btn btn-sm crud-buttons"><i class="bi bi-eye-fill"></i></button>
-                  <button id="openEditModal" class="btn btn-sm crud-buttons"><i class="bi bi-pencil-square"></i></button>
+                  <button class="btn btn-sm crud-buttons openViewModal" data-id="' . $registro["cod_tipo_doc"] . '"><i class="bi bi-eye-fill"></i></button>
+                  <button class="btn btn-sm crud-buttons openEditModal" data-id="' . $registro["cod_tipo_doc"] . '"><i class="bi bi-pencil-square"></i></button>
                   <button class="btn btn-sm crud-buttons deleteButton" data-id="' . $registro["cod_tipo_doc"] . '"><i class="bi bi-trash-fill"></i></button>
                 </span>
               </li>';
@@ -61,7 +60,7 @@ require_once './valida_cadastroTipoDocumento.php';
       <div class="modal-content">
         <span id="closeAddModal" class="close">&times;</span>
         <h2>Cadastrar documento</h2>
-        <form class="w-100 custom-form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form class="w-100 custom-form" method="POST" action="./valida_cadastroTipoDocumento.php">
           <div class="custom-form-group">
             <label for="tipoDocCadastro" class="col-md-3">Tipo do Documento:</label>
             <input type="text" name="tipoDocCadastro" id="tipoDocCadastro" class="form-control rounded-3 custom-modal-form-input">
@@ -96,7 +95,8 @@ require_once './valida_cadastroTipoDocumento.php';
       <div class="modal-content">
         <span id="closeEditModal" class="close">&times;</span>
         <h2>Editar documento</h2>
-        <form class="w-100 custom-form">
+        <form class="w-100 custom-form" method="POST" action="./valida_atualizarTipoDocumento.php">
+          <input type="hidden" name="codTipoDocEditar" id="codTipoDocEditar" class="form-control rounded-3 custom-modal-form-input">
           <div class="custom-form-group">
             <label for="tipoDocEditar" class="col-md-3">Tipo do Documento:</label>
             <input type="text" name="tipoDocEditar" id="tipoDocEditar" class="form-control rounded-3 custom-modal-form-input">
@@ -105,7 +105,7 @@ require_once './valida_cadastroTipoDocumento.php';
             <label for="tempoArmazenamentoEditar" class="col-md-3">Tempo de armazenamento:</label>
             <input type="text" name="tempoArmazenamentoEditar" id="tempoArmazenamentoEditar" class="form-control rounded-3 custom-modal-form-input">
           </div>
-          <button type="submit" class="btn btn-primary btn-modal">Salvar</button>
+          <button id="salvarTipoDocEditar" type="submit" class="btn btn-primary btn-modal">Salvar</button>
         </form>
       </div>
     </div>

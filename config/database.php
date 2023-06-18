@@ -90,7 +90,7 @@ function atualizarTipoDocumentoDb($conexao, $codTipoDoc, $tipoDoc, $tempArquivam
       exit(SQLErrorMessage);
     }
 
-    mysqli_stmt_bind_param($stmt, 'sii', $tipoDoc, $tempArquivamento, $id);
+    mysqli_stmt_bind_param($stmt, 'sii', $tipoDoc, $tempArquivamento, $codTipoDoc);
     mysqli_stmt_execute($stmt);
     mysqli_close($conexao);
     return true;

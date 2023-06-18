@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Validação do campo tempoArquivamentoCadastro
   if (empty($_POST["tempoArquivamentoCadastro"])) {
-    $tempoArquivamentoCadastroErro = "O tipo do documento é obrigatório";
+    $tempoArquivamentoCadastroErro = "O tempo de arquivamento é obrigatório";
   } else {
     $tempoArquivamentoCadastro = formataCampo($_POST["tempoArquivamentoCadastro"]);
     // Verifica se o valor é um número inteiro
@@ -39,10 +39,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Se não houver erros, o registro do usuário pode ser realizado
   if (empty($tipoDocCadastroErro) && empty($tempoArquivamentoCadastroErro)) {
     $resultado = criarTipoDocumentoAction($conexao, $tipoDocCadastro, $tempoArquivamentoCadastro);
-    header("Location: {$_SERVER['REQUEST_URI']}");
-    echo "window.alert(" . $resultado . ")";
+
+    if ($resultado == 'criado-com-sucesso') {
+      header("Location: /digitoscontabilidade/screens/tipoDocumento.php");
+      exit();
+    } else {
+      echo "<h1>" . $resultado . "</h1>";
+      echo "<script>alert('" . $resultado . "');</script>";
+      echo "<script>window.location.href = '/digitoscontabilidade/screens/tipoDocumento.php';</script>";
+    }
     exit();
   } else {
-    echo "<script>window.alert('Erro ao cadastrar')</script>";
+    echo "<script>alert('" . $tipoDocCadastroErro . $tempoArquivamentoCadastroErro . "');</script>";
+    echo "<script>window.location.href = '/digitoscontabilidade/screens/tipoDocumento.php';</script>";
+    exit();
   }
 }

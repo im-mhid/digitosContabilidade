@@ -1,6 +1,6 @@
 const openAddModalButton = document.getElementById('openAddModal')
-const openViewModalButton = document.getElementById('openViewModal')
-const openEditModalButton = document.getElementById('openEditModal')
+const openViewModalButtons = document.getElementsByClassName('openViewModal')
+const openEditModalButtons = document.getElementsByClassName('openEditModal')
 const closeAddModalButton = document.getElementById('closeAddModal')
 const closeViewModalButton = document.getElementById('closeViewModal')
 const closeEditModalButton = document.getElementById('closeEditModal')
@@ -12,12 +12,49 @@ openAddModalButton.addEventListener('click', function () {
   addModal.style.display = 'block'
 })
 
-openViewModalButton.addEventListener('click', function () {
-  viewModal.style.display = 'block'
+Array.from(openViewModalButtons).forEach(function (button) {
+  button.addEventListener('click', function () {
+    let id = this.getAttribute('data-id')
+    console.log(id)
+
+    fetch('obter_tipoDocumento.php?id=' + id)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('tipoDocVisualizar').value = data.tipo_doc
+        document.getElementById('tempoArmazenamentoVisualizar').value =
+          data.temp_arquivamento
+        viewModal.style.display = 'block'
+      })
+      .catch(error => {
+        alert(
+          'Erro ao obter os dados do registro. Por favor, tente novamente mais tarde.\n\nDetalhes do erro: ' +
+            error
+        )
+      })
+  })
 })
 
-openEditModalButton.addEventListener('click', function () {
-  editModal.style.display = 'block'
+Array.from(openEditModalButtons).forEach(function (button) {
+  button.addEventListener('click', function () {
+    let id = this.getAttribute('data-id')
+    console.log(id)
+
+    fetch('obter_tipoDocumento.php?id=' + id)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('codTipoDocEditar').value = data.cod_tipo_doc
+        document.getElementById('tipoDocEditar').value = data.tipo_doc
+        document.getElementById('tempoArmazenamentoEditar').value =
+          data.temp_arquivamento
+        editModal.style.display = 'block'
+      })
+      .catch(error => {
+        alert(
+          'Erro ao obter os dados do registro. Por favor, tente novamente mais tarde.\n\nDetalhes do erro: ' +
+            error
+        )
+      })
+  })
 })
 
 closeAddModalButton.addEventListener('click', function () {
